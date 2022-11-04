@@ -31,9 +31,9 @@
             class="border border-5 border-light rounded" alt="hehe" id="profile-pic">
 
         <div class="btn-toolbar">
-            <router-link :to="`/editlog/${this.$store.state.auth.user.id}/${this.$route.params.id}`" ><button type="button" class="btn btn-primary log-btn btn-lg"
+            <router-link :to="{ name: 'editlog', params: { userId: userId, id : logId } }"><button type="button" class="btn btn-primary log-btn btn-lg"
                     href="EnterLog.vue">Edit</button></router-link>
-            <button v-on:click="JSalert(this.$store.state.auth.user.id, this.$route.params.id, this.$store.state.auth.user.accessToken, this.$router)" type="button" class="btn btn-outline-dark log-btn btn-lg">Delete</button>
+            <button v-on:click="JSalert(userId, logId, accessToken, router)" type="button" class="btn btn-outline-dark log-btn btn-lg">Delete</button>
             <RouterLink to="/logging"><button type="button" class="btn btn-outline-dark back-btn btn-lg"
                     href="Log.vue">Back to Logs</button></RouterLink>
         </div>
@@ -50,6 +50,10 @@ export default {
     data() {
         return {
             data: [],
+            userId: this.$store.state.auth.user.id,
+            logId: this.$route.params.id,
+            accessToken: this.$store.state.auth.user.accessToken,
+            router: this.$router
         };
     },
     created() {

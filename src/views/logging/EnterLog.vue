@@ -1,6 +1,4 @@
-<script setup>
-import Footer from "../../components/Footer.vue";
-</script>
+
 
 <template>
   <div class="enter-log-view">
@@ -16,12 +14,29 @@ import Footer from "../../components/Footer.vue";
       <Form @submit="onSubmit" :validation-schema="schema" v-on:submit.prevent="submitForm">
         <div class="form-group">
           <label for="itemType">Type of e-waste: </label>
-          <select id="itemType" v-model="itemType" @update:v-model="itemType = $event"  class="form-select" aria-label="Default select example">
+          <!-- <select id="itemType" v-model="itemType" @change:v-model="newValue => itemType = newValue"  class="form-select" aria-label="Default select example">
             <option selected>-- Select type of e-waste --</option>
-            <option value="ICT" @update:v-model="itemType = $event">Information and Communication Equipment (ICT)</option>
-            <option value="Household Battery" @update:v-model="itemType = $event">Household Battery</option>
-            <option value="Consumer Lamp" @update:v-model="itemType = $event">Consumer Lamp</option>
-          </select>
+            <option value="ICT" @change:v-model="itemType = $event">Information and Communication Equipment (ICT)</option>
+            <option value="Household Battery" @change:v-model="itemType = $event">Household Battery</option>
+            <option value="Consumer Lamp" @change:v-model="itemType = $event">Consumer Lamp</option>
+          </select> -->
+          <div class="item-types">
+
+            <div>Picked: {{ itemType }} </div>
+
+            <input type="radio" class="btn-check" name="options" id="ICT" autocomplete="off" value="ICT"
+              v-model="itemType" @update:v-model="itemType = $event" checked />
+            <label class="btn btn-outline-dark" for="ICT">ICT</label>
+
+            <input type="radio" class="btn-check" name="options" id="Batteries" autocomplete="off" value="Household Battery"
+              v-model="itemType" @update:v-model="itemType = $event" />
+            <label class="btn btn-outline-dark" for="Batteries">Batteries</label>
+
+            <input type="radio" class="btn-check" name="options" id="CL-B" autocomplete="off" value="Consumer Lamp"
+              v-model="itemType" @update:v-model="itemType = $event" />
+            <label class="btn btn-outline-dark" for="CL-B">Consumer Lamp</label>
+          </div>
+
 
           <p>
             <a class="help-btn btn btn-primary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button"
@@ -31,8 +46,9 @@ import Footer from "../../components/Footer.vue";
           </p>
           <div class="collapse" id="collapseExample">
             <div class="card card-body">
-              <p>If your item is not found in any of these categories, they cannot be thrown in the bins. 
-                We would recommend for you to bring your E-Waste down to the nearest Cash for Trash (CFT) station. <a href="https://www.alba-wh.sg/map.html">Click here for more information.</a></p>
+              <p>If your item is not found in any of these categories, they cannot be thrown in the bins.
+                We would recommend for you to bring your E-Waste down to the nearest Cash for Trash (CFT) station. <a
+                  href="https://www.alba-wh.sg/map.html">Click here for more information.</a></p>
               <h5>Information and Communication Equipment (ICT)</h5>
               <ul class="type-list">
                 <li>
@@ -98,7 +114,8 @@ import Footer from "../../components/Footer.vue";
 
         <div class="form-group">
           <label for="itemName"> Name of e-waste: </label>
-          <select id="itemName" v-model="itemName" @update:v-model="itemName = $event" class="form-select" aria-label="Default select example">
+          <select id="itemName" v-model.lazy="itemName" @update:v-model="itemName = $event" class="form-select"
+            aria-label="Default select example">
             <option selected>-- Select type of e-waste --</option>
             <option v-show="itemType === ('ICT')" value="Computer">Computer/Laptop (ICT)</option>
             <option v-show="itemType === ('ICT')" value="Phone">Mobile Phone/Tablet (ICT)</option>
@@ -116,22 +133,23 @@ import Footer from "../../components/Footer.vue";
             <option v-show="itemType === ('Household Battery')" value="ButtonCell">ButtonCell (Battery)</option>
 
             <option v-show="itemType === ('Consumer Lamp')" value="Bulb">Bulb (Consumer Lamp)</option>
-            <option v-show="itemType === ('Consumer Lamp')" value="Fluorescent Tube">Fluorescent Tube (Consumer Lamp)</option>
+            <option v-show="itemType === ('Consumer Lamp')" value="Fluorescent Tube">Fluorescent Tube (Consumer Lamp)
+            </option>
           </select>
           <ErrorMessage name="username" class="error-feedback" />
         </div>
 
-        <div>Picked: {{ itemType }} </div>
-
         <div class="formY-group">
           <label for="createdDate">Date (YYYY-MM-DD): </label>
-          <input id="createdDate" v-model="createdDate" @update:v-model="createdDate = $event" type="text" class="form-control" />
+          <input id="createdDate" v-model="createdDate" @update:v-model="createdDate = $event" type="text"
+            class="form-control" />
         </div>
 
         <div class="form-group">
           <label for="itemNotes">Notes: </label>
-          <input id="itemNotes" v-model="itemNotes" @update:v-model="itemNotes = $event" type="text" class="form-control" />
-        </div>  
+          <input id="itemNotes" v-model="itemNotes" @update:v-model="itemNotes = $event" type="text"
+            class="form-control" />
+        </div>
 
         <div class="form-group">
           <button class="btn btn-primary btn-block" :disabled="loading">
@@ -140,8 +158,8 @@ import Footer from "../../components/Footer.vue";
           </button>
         </div>
       </Form>
-    </div> 
-    <Footer/>
+    </div>
+    <Footer />
   </div>
 
 </template>
@@ -149,6 +167,7 @@ import Footer from "../../components/Footer.vue";
 
 <script>
 import axios from 'axios';
+import Footer from "../../components/Footer.vue";
 
 
 export default {
@@ -156,7 +175,7 @@ export default {
   name: 'LogEntry',
   data() {
     return {
-      itemType: '',
+      itemType: 'ICT',
       itemName: '',
       createdDate: '',
       itemNotes: ''
@@ -165,7 +184,7 @@ export default {
     onSubmit(e) {
       e.preventDefault();
 
-      if(!(this.itemName || this.createdDate)){
+      if (!(this.itemName || this.createdDate)) {
         alert('❌ Item Name field is required \n❌ Date field is required')
         return
       }
@@ -181,7 +200,7 @@ export default {
 
       let currentObj = this;
       let self = this;
-      const API_URL ='http://localhost:8080/api/logging/addlog/';
+      const API_URL = 'http://localhost:8080/api/logging/addlog/';
       axios.post(API_URL + this.$store.state.auth.user.id, {
         itemName: this.itemName,
         itemType: this.itemType,
@@ -189,7 +208,7 @@ export default {
         createdDate: this.createdDate
       }, {
         headers: {
-          'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken 
+          'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken
         }
       })
         .then(function (response) {
@@ -226,6 +245,15 @@ label {
   margin: 5%;
 }
 
+.btn-check:checked+.btn {
+  background-color:#5E454B;
+  color: white !important;
+}
+
+.item-types {
+  margin: 30px 0 50px;
+}
+
 .back {
   background-color: #5E454B;
   color: white;
@@ -244,7 +272,7 @@ label {
 }
 
 .help-btn {
-  margin-top: 20px;
+  margin-top: 5px;
   margin-left: 250px;
 }
 

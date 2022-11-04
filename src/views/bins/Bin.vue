@@ -12,8 +12,11 @@ import Footer from "../../components/Footer.vue";
           <Form @submit="onSubmit" :validation-schema="schema" v-on:submit.prevent="submitForm">
             <div class="form-group">
               <label for="postalCode">Enter Bin Postal Code</label>
-              <input name="postalCode" v-model="postalCode" type="text" class="form-control" />
+              <input name="postalCode" v-model="postalCode"
+              @input="$emit('update:modelValue', $event.target.value)" type="text" class="form-control" />
             </div>
+
+            {{postalCode}}
 
             <div class="form-group">
               <button class="submit-btn btn btn-primary btn-block" :disabled="loading">
@@ -45,6 +48,8 @@ import Footer from "../../components/Footer.vue";
 import axios from 'axios';
 
 export default {
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
   name: 'BinEntry',
   data() {
     return {
@@ -52,12 +57,7 @@ export default {
     }
   }, methods: {
     onSubmit(e) {
-      e.preventDefault();
 
-      if (!(this.postalCode)) {
-        alert('❌ Address field is required')
-        return
-      }
       //console.log(this.$store.state.auth.user.accessToken);
       let currentObj = this;
       let self = this;

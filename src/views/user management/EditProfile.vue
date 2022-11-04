@@ -22,13 +22,15 @@ import Footer from "../../components/Footer.vue";
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-                <Field name="passwordCheck" v-model="password" type="password" class="form-control"/>
+                <Field name="passwordCheck" :modelValue="password"
+                @update:modelValue="newValue => password = newValue" type="password" class="form-control"/>
               <ErrorMessage name="passwordCheck" class="error-feedback" />
             </div>
 
             <div class="form-group">
               <label for="confirmpassword">Confirm Password</label>
-                <Field name="confirmpasswordCheck" v-model="confirmpassword" type="password" class="form-control"/>
+                <Field name="confirmpasswordCheck" :modelValue="confirmpassword"
+                @update:modelValue="newValue => confirmpassword = newValue" type="password" class="form-control"/>
               <ErrorMessage name="confirmpasswordCheck" class="error-feedback" />
             </div>
 

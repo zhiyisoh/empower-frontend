@@ -186,7 +186,7 @@ import Footer from "../../components/Footer.vue";
     data() {
       return {
         location: '',
-        recycleType: '',
+        recycleType: 'ICT',
         longitude: '',
         latitude:''
       }

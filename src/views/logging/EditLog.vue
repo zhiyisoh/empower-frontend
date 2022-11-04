@@ -7,18 +7,28 @@ import Footer from "../../components/Footer.vue";
 
 
     <div class="enter">
-      <h1>Hello {{ this.$store.state.auth.user.username }}, made a mistake somewhere?</h1>
+      <h1>Made a mistake somewhere?</h1>
       <img src="/src/assets/recycle-bin.gif" alt="leaves" class="bin-icon">
 
       <Form @submit="onSubmit" :validation-schema="schema" v-on:submit.prevent="submitForm">
         <div class="form-group">
           <label for="itemType">Type of e-waste: </label>
-          <select id="itemType" v-model="record.itemType" class="form-select" aria-label="Default select example">
-            <option selected>-- Select type of e-waste --</option>
-            <option value="ICT">Information and Communication Equipment (ICT)</option>
-            <option value="Household Battery">Household Battery</option>
-            <option value="Consumer Lamp">Consumer Lamp</option>
-          </select>
+          <div class="item-types">
+
+            <div>Picked: {{ itemType }} </div>
+
+            <input type="radio" class="btn-check" name="options" id="ICT" autocomplete="off" value="ICT"
+              v-model="record.itemType" @update:v-model="itemType = $event" checked />
+            <label class="btn btn-outline-dark" for="ICT">ICT</label>
+
+            <input type="radio" class="btn-check" name="options" id="Batteries" autocomplete="off" value="Household Battery"
+              v-model="record.itemType" @update:v-model="itemType = $event" />
+            <label class="btn btn-outline-dark" for="Batteries">Batteries</label>
+
+            <input type="radio" class="btn-check" name="options" id="CL-B" autocomplete="off" value="Consumer Lamp"
+              v-model="record.itemType" @update:v-model="itemType = $event" />
+            <label class="btn btn-outline-dark" for="CL-B">Consumer Lamp</label>
+          </div>
           <div v-if="message" class="alert" :class="successful ? 'alert-success' : 'alert-danger'">
             {{ message }}
           </div>
@@ -108,7 +118,7 @@ import Footer from "../../components/Footer.vue";
 
         <div class="form-group">
           <label for="itemName">Item name: </label>
-          <select id="itemType" v-model="record.itemName" class="form-select" aria-label="Default select example">
+          <select id="itemType" v-model.lazy="record.itemName" @update:v-model="itemName = $event" class="form-select" aria-label="Default select example">
             <option selected>-- Select type of e-waste --</option>
             <option v-show="record.itemType === ('ICT')" value="Computer">Computer/Laptop (ICT)</option>
             <option v-show="record.itemType === ('ICT')" value="Phone">Mobile Phone/Tablet (ICT)</option>
@@ -134,12 +144,12 @@ import Footer from "../../components/Footer.vue";
 
         <div class="form-group">
           <label for="createdDate">Date (YYYY-MM-DD): </label>
-          <input id="createdDate" v-model="record.createdDate" type="text" class="form-control" />
+          <input id="createdDate" v-model="record.createdDate"  @update:v-model="createdDate = $event" type="text" class="form-control" />
         </div>
 
         <div class="form-group">
           <label for="itemNotes">Notes: </label>
-          <input id="itemNotes" v-model="record.itemNotes" type="text" class="form-control" />
+          <input id="itemNotes" v-model="record.itemNotes"  @update:v-model="itemNotes = $event" type="text" class="form-control" />
         </div>
 
         <div v-if="message" class="alert" :class="successful ? 'alert-success' : 'alert-danger'">
@@ -245,6 +255,15 @@ label {
   font-size: 24px;
 }
 
+
+.btn-check:checked+.btn {
+  background-color:#5E454B;
+  color: white !important;
+}
+
+.item-types {
+  margin: 30px 0 50px;
+}
 .enter-log-view {
   font-family: 'Merriweather', sans-serif;
   color: #5E454B;
