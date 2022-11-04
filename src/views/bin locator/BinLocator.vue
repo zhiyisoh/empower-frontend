@@ -206,13 +206,13 @@ import axios from 'axios';
 
          } 
         })
-      .then(function(response){
+      .then(response =>{
         currentObj.longitude = response.data.results[0].LONGITUDE;
         currentObj.latitude = response.data.results[0].LATITUDE;
         //console.log(response.data.results[0].LATITUDE);
         //alert(currentObj.longitude + ' and ' + currentObj.latitude);
       })
-      .catch(function(error){
+      .catch(error => {
         alert('Invalid Location. ' + error);
       });
       
@@ -228,12 +228,12 @@ import axios from 'axios';
           'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken 
         }
       })
-        .then(function (response) {
+        .then(response => {
           currentObj.output = response.data;
           console.log(response.data);
           self.$router.push('/returnedbins/' + response.data);
         })
-        .catch(function (error) {
+        .catch(error => {
           currentObj.output = error;
           alert('Unsuccessful Submission. ' + error);
         });
