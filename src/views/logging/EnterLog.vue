@@ -10,7 +10,7 @@ import Footer from "../../components/Footer.vue";
 
 
     <div class="enter">
-      <h1>Hello {{this.$store.state.auth.user.username}}, ready to recycle?</h1>
+      <h1>Ready to recycle?</h1>
       <img src="/src/assets/recycle-bin.gif" alt="leaves" class="bin-icon">
 
       <Form @submit="onSubmit" :validation-schema="schema" v-on:submit.prevent="submitForm">
