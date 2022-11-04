@@ -16,11 +16,11 @@ import Footer from "../../components/Footer.vue";
       <Form @submit="onSubmit" :validation-schema="schema" v-on:submit.prevent="submitForm">
         <div class="form-group">
           <label for="itemType">Type of e-waste: </label>
-          <select id="itemType" v-model="itemType" class="form-select" aria-label="Default select example">
+          <select id="itemType" v-model="itemType" @update:v-model="itemType = $event"  class="form-select" aria-label="Default select example">
             <option selected>-- Select type of e-waste --</option>
-            <option value="ICT">Information and Communication Equipment (ICT)</option>
-            <option value="Household Battery">Household Battery</option>
-            <option value="Consumer Lamp">Consumer Lamp</option>
+            <option value="ICT" @update:v-model="itemType = $event">Information and Communication Equipment (ICT)</option>
+            <option value="Household Battery" @update:v-model="itemType = $event">Household Battery</option>
+            <option value="Consumer Lamp" @update:v-model="itemType = $event">Consumer Lamp</option>
           </select>
 
           <p>
@@ -97,8 +97,8 @@ import Footer from "../../components/Footer.vue";
         </div>
 
         <div class="form-group">
-          <label for="itemType"> Name of e-waste: </label>
-          <select id="itemType" v-model="itemName" class="form-select" aria-label="Default select example">
+          <label for="itemName"> Name of e-waste: </label>
+          <select id="itemName" v-model="itemName" @update:v-model="itemName = $event" class="form-select" aria-label="Default select example">
             <option selected>-- Select type of e-waste --</option>
             <option v-show="itemType === ('ICT')" value="Computer">Computer/Laptop (ICT)</option>
             <option v-show="itemType === ('ICT')" value="Phone">Mobile Phone/Tablet (ICT)</option>
@@ -121,14 +121,16 @@ import Footer from "../../components/Footer.vue";
           <ErrorMessage name="username" class="error-feedback" />
         </div>
 
-        <div class="form-group">
+        <div>Picked: {{ itemType }} </div>
+
+        <div class="formY-group">
           <label for="createdDate">Date (YYYY-MM-DD): </label>
-          <input id="createdDate" v-model="createdDate" type="text" class="form-control" />
+          <input id="createdDate" v-model="createdDate" @update:v-model="createdDate = $event" type="text" class="form-control" />
         </div>
 
         <div class="form-group">
           <label for="itemNotes">Notes: </label>
-          <input id="itemNotes" v-model="itemNotes" type="text" class="form-control" />
+          <input id="itemNotes" v-model="itemNotes" @update:v-model="itemNotes = $event" type="text" class="form-control" />
         </div>  
 
         <div class="form-group">

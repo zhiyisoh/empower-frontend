@@ -1,6 +1,4 @@
-<script setup>
-    import Footer from "../../components/Footer.vue";
-</script>
+
 
 <template>
     <div class="locator-view">
@@ -151,13 +149,13 @@
 
                             <div>Picked: {{ recycleType }} </div>
 
-                            <input type="radio" class="btn-check" name="options" id="ICT" autocomplete="off" value="ICT" v-model="recycleType" checked />
+                            <input type="radio" class="btn-check" name="options" id="ICT" autocomplete="off" value="ICT" v-model="recycleType" @update:v-model="recycleType = $event" checked />
                             <label class="btn btn-outline-dark" for="ICT">ICT</label>
 
-                            <input type="radio" class="btn-check" name="options" id="Batteries" autocomplete="off" value="Batteries" v-model="recycleType" />
+                            <input type="radio" class="btn-check" name="options" id="Batteries" autocomplete="off" value="Batteries" v-model="recycleType" @update:v-model="recycleType = $event"  />
                             <label class="btn btn-outline-dark" for="Batteries">Batteries</label>
 
-                            <input type="radio" class="btn-check" name="options" id="CL-B" autocomplete="off" value="Bulb" v-model="recycleType"/>
+                            <input type="radio" class="btn-check" name="options" id="CL-B" autocomplete="off" value="Bulb" v-model="recycleType" @update:v-model="recycleType = $event" />
                             <label class="btn btn-outline-dark" for="CL-B">Consumer Lamp (Bulb)</label>
 
                         </div>
@@ -180,6 +178,8 @@
 
 <script>
 import axios from 'axios';
+import Footer from "../../components/Footer.vue";
+
 
   export default {
     name: 'LocatorEntry',
