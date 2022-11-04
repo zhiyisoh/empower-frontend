@@ -193,11 +193,6 @@ import axios from 'axios';
   }, methods: {
     async onSubmit(e) {
       e.preventDefault();
-
-      if(!(this.location)){
-        alert('❌ Address field is required')
-        return
-      }
       
 
       let currentObj = this;
