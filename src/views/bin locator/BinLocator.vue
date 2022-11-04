@@ -197,6 +197,7 @@ import axios from 'axios';
 
       let currentObj = this;
       let self = this;
+      console.log(this.location);
 
       const location_url = 'https://developers.onemap.sg/commonapi/search?searchVal=' + this.location + '&returnGeom=Y&getAddrDetails=Y&pageNum=1';
       //console.log(location_url);
