@@ -10,7 +10,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="dashboard-view">
+  hellooo
+  <!-- <div class="dashboard-view">
 
   <div class="bobo-chat" data-aos="fade-right">
       <h1>Hello, {{this.$store.state.auth.user.username}}!</h1>
@@ -24,7 +25,7 @@ onMounted(() => {
   </div>
 
 
-  <Footer />
+  <Footer /> -->
 </template>
   
 <style scoped>
