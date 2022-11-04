@@ -11,7 +11,7 @@ onMounted(() => {
 
 <template>
   hellooo
-  <!-- <div class="dashboard-view">
+  <div class="dashboard-view">
 
   <div class="bobo-chat" data-aos="fade-right">
       <h1>Hello, {{this.$store.state.auth.user.username}}!</h1>
@@ -21,11 +21,11 @@ onMounted(() => {
     <img src="/src/assets/penguinlogo.svg" alt="e-mpower logo" id="bobo-icon" data-aos="flip-left" data-aos-easing="ease-out-cubic"
     data-aos-duration="2000">
 
-    <YearlySummary />
+    <!-- <YearlySummary /> -->
   </div>
 
 
-  <Footer /> -->
+  <Footer />
 </template>
   
 <style scoped>
