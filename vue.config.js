@@ -1,3 +1,5 @@
 module.exports = {
-    publicPath: '/empower-frontend/'
+    publicPath: process.env.NODE_ENV === 'production'
+    ? '/empower-frontend/'
+    : '/'
  }
