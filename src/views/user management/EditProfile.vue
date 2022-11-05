@@ -123,7 +123,7 @@ export default {
       this.loading = false;
 
       let currentObj = this;
-      const API_URL ='http://3.222.113.2:8080/api/auth/editprofile/' + this.$store.state.auth.user.id;
+      const API_URL ='http://3.239.162.14:8080/api/auth/editprofile/' + this.$store.state.auth.user.id;
 
       axios.put(API_URL, {
         username: this.record.username,
