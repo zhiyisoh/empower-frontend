@@ -81,8 +81,8 @@ export default {
         };
     },
     mounted() {
-            console.log('https://ec2-54-196-27-5.compute-1.amazonaws.com/api/logging/co2sum/' + this.$store.state.auth.user.id);
-            axios.get('https://ec2-54-196-27-5.compute-1.amazonaws.com/api/logging/co2sum/' + this.$store.state.auth.user.id, {
+            console.log('http://44.192.110.237:8080/api/logging/co2sum/' + this.$store.state.auth.user.id);
+            axios.get('http://44.192.110.237:8080/api/logging/co2sum/' + this.$store.state.auth.user.id, {
                 headers: {
                     'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken
                 }
@@ -91,7 +91,7 @@ export default {
                 console.log(this.sumn)
             });
 
-            axios.get('https://ec2-54-196-27-5.compute-1.amazonaws.com/api/logging/co2sum', {
+            axios.get('http://44.192.110.237:8080/api/logging/co2sum', {
                 headers: {
                     'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken
                 }

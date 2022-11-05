@@ -101,7 +101,7 @@ export default {
     }
     
   }, created() {
-    const url = "https://ec2-54-196-27-5.compute-1.amazonaws.com/api/auth/profile/" ;
+    const url = "http://44.192.110.237:8080/api/auth/profile/" ;
     axios.get(url + this.$store.state.auth.user.id, {
       headers: {
         'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken
@@ -123,7 +123,7 @@ export default {
       this.loading = false;
 
       let currentObj = this;
-      const API_URL ='http://3.239.187.180.compute-1.amazonaws.com/api/auth/editprofile/' + this.$store.state.auth.user.id;
+      const API_URL ='http://54.81.35.231:8080/api/auth/editprofile/' + this.$store.state.auth.user.id;
 
       axios.put(API_URL, {
         username: this.record.username,
