@@ -101,7 +101,7 @@ export default {
     }
     
   }, created() {
-    const url = "https://ec2-44-201-1-236.compute-1.amazonaws.com/api/auth/profile/" ;
+    const url = "https://ec2-54-196-27-5.compute-1.amazonaws.com/api/auth/profile/" ;
     axios.get(url + this.$store.state.auth.user.id, {
       headers: {
         'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken
