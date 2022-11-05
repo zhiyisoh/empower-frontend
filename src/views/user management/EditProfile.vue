@@ -101,7 +101,7 @@ export default {
     }
     
   }, created() {
-    const url = "http://localhost:8080/api/auth/profile/" ;
+    const url = "http://44.203.231.52:8080/api/auth/profile/" ;
     axios.get(url + this.$store.state.auth.user.id, {
       headers: {
         'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken
