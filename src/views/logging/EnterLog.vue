@@ -200,7 +200,7 @@ export default {
 
       let currentObj = this;
       let self = this;
-      const API_URL = 'http://localhost:8080/api/logging/addlog/';
+      const API_URL = 'https://52.90.166.252:8080/api/logging/addlog/';
       axios.post(API_URL + this.$store.state.auth.user.id, {
         itemName: this.itemName,
         itemType: this.itemType,

@@ -57,7 +57,7 @@ export default {
         };
     },
     created() {
-        const API_URL = 'http://localhost:8080/api/logging/';
+        const API_URL = 'https://52.90.166.252:8080/api/logging/';
         this.ewasteid = this.$route.params.id;
         axios.get(API_URL + this.$route.params.id, {
         headers: {
@@ -79,7 +79,7 @@ function JSalert(userid, logid, accessToken, router){
   confirmButtonText: 'Yes, delete it!',
   preConfirm: () => {
             return axios
-              .delete(`http://localhost:8080/api/logging/deletelog/${userid}/${logid}`,
+              .delete(`https://52.90.166.252:8080/api/logging/deletelog/${userid}/${logid}`,
             {
         headers: {
           'Authorization': 'Bearer ' + accessToken 

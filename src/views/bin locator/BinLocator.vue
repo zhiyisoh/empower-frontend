@@ -219,7 +219,7 @@ import Footer from "../../components/Footer.vue";
       
       
       
-      const API_URL ='http://localhost:8080/api/bins/findNearestBin';
+      const API_URL ='https://52.90.166.252:8080/api/bins/findNearestBin';
       await axios.post(API_URL, {
         longitude: this.longitude,
         latitude: this.latitude,

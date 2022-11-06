@@ -200,7 +200,7 @@ export default {
 
       let currentObj = this;
       let self = this;
-      const API_URL = 'http://localhost:8080/api/logging/updatelog/';
+      const API_URL = 'https://52.90.166.252:8080/api/logging/updatelog/';
 
       axios.put(API_URL + this.$store.state.auth.user.id + '/' + this.$route.params.id, {
         itemName: this.record.itemName,
@@ -222,7 +222,7 @@ export default {
         });
     }
   }, mounted() {
-    const url = "http://localhost:8080/api/logging/"; //to be changed
+    const url = "https://52.90.166.252:8080/api/logging/"; //to be changed
     axios.get(url + this.$route.params.id, {
       headers: {
         'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken

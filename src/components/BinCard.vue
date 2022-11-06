@@ -35,7 +35,7 @@ export default {
         for(let i = 0; i < this.$route.query.data.length; i++){
             console.log(this.$route.query.data[i]);
             try {
-                const API_URL = 'http://localhost:8080/api/bins/';
+                const API_URL = 'https://52.90.166.252:8080/api/bins/';
                 axios.get(API_URL + this.$route.query.data[i], {
         headers: {
           'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken 
@@ -98,7 +98,7 @@ function JSalert(binid, accessToken, router){
   confirmButtonText: 'Yes, delete it!',
   preConfirm: () => {
             return axios
-              .delete(`http://localhost:8080/api/logging/deleteBin/${binid}`,
+              .delete(`http://54.80.234.0:8080/api/logging/deleteBin/${binid}`,
             {
         headers: {
           'Authorization': 'Bearer ' + accessToken 
