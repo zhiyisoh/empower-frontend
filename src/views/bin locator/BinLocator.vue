@@ -1,6 +1,4 @@
-<script setup>
-    import Footer from "../../components/Footer.vue";
-</script>
+
 
 <template>
     <div class="locator-view">
@@ -174,8 +172,6 @@
         </div>
     </div>
     
-    
-    <Footer/>
 </template>
 
 <script>
@@ -292,6 +288,10 @@ label {
     .btn-check:checked+.btn {
         background-color:#5E454B;
         color: white !important;
+    }
+
+    .btn-block {
+      margin-bottom: 10px;
     }
     
 </style>
