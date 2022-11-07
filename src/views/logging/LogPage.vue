@@ -57,7 +57,7 @@ export default {
         };
     },
     created() {
-        const API_URL = 'https://52.90.166.252:8080/api/logging/';
+        const API_URL = 'https://3.235.94.54:8080/api/logging/';
         this.ewasteid = this.$route.params.id;
         axios.get(API_URL + this.$route.params.id, {
         headers: {

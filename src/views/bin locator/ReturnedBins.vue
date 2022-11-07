@@ -43,7 +43,7 @@ import axios from 'axios';
         }
     }, created(){
         try{
-            const API_URL = 'https://52.90.166.252:8080/api/bins/' + this.$route.params.binid;
+            const API_URL = 'https://3.235.94.54:8080/api/bins/' + this.$route.params.binid;
             axios.get(API_URL, {
         headers: {
           'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken 

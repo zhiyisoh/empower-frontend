@@ -35,7 +35,7 @@ export default {
     },
     created() {
             try {
-                const API_URL = 'https://52.90.166.252:8080/api/logging/userlogs/';
+                const API_URL = 'https://3.235.94.54:8080/api/logging/userlogs/';
                 axios.get(API_URL + this.$store.state.auth.user.id, {
         headers: {
           'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken 

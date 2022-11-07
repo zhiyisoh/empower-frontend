@@ -101,7 +101,7 @@ export default {
     }
     
   }, created() {
-    const url = "https://52.90.166.252:8080/api/auth/profile/" ;
+    const url = "https://3.235.94.54:8080/api/auth/profile/" ;
     axios.get(url + this.$store.state.auth.user.id, {
       headers: {
         'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken
@@ -123,7 +123,7 @@ export default {
       this.loading = false;
 
       let currentObj = this;
-      const API_URL ='https://52.90.166.252:8080/api/auth/editprofile/' + this.$store.state.auth.user.id;
+      const API_URL ='https://3.235.94.54:8080/api/auth/editprofile/' + this.$store.state.auth.user.id;
 
       axios.put(API_URL, {
         username: this.record.username,

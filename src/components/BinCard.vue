@@ -35,7 +35,7 @@ export default {
         for(let i = 0; i < this.$route.query.data.length; i++){
             console.log(this.$route.query.data[i]);
             try {
-                const API_URL = 'https://52.90.166.252:8080/api/bins/';
+                const API_URL = 'https://3.235.94.54:8080/api/bins/';
                 axios.get(API_URL + this.$route.query.data[i], {
         headers: {
           'Authorization': 'Bearer ' + this.$store.state.auth.user.accessToken 
