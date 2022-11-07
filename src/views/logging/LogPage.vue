@@ -79,7 +79,7 @@ function JSalert(userid, logid, accessToken, router){
   confirmButtonText: 'Yes, delete it!',
   preConfirm: () => {
             return axios
-              .delete(`https://52.90.166.252:8080/api/logging/deletelog/${userid}/${logid}`,
+              .delete(`https://3.235.94.54:8080/api/logging/deletelog/${userid}/${logid}`,
             {
         headers: {
           'Authorization': 'Bearer ' + accessToken 
