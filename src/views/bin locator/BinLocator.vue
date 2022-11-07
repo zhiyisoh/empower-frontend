@@ -291,7 +291,7 @@ label {
     }
 
     .btn-block {
-      margin-bottom: 10px;
+      margin-bottom: 100px;
     }
     
 </style>
