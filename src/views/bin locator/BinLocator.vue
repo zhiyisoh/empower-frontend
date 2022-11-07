@@ -180,7 +180,6 @@
 
 <script>
 import axios from 'axios';
-import Footer from "../../components/Footer.vue";
 
 
   export default {
